@@ -11,7 +11,7 @@ spec:
     storage: 5Gi  # Recommended for vulnerability database
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: gp2
   persistentVolumeReclaimPolicy: Retain  # Preserve vulnerability DB
   hostPath:
     path: /data/trivy
