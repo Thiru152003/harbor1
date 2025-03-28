@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: harbor-portal
+  namespace: harbor
+  labels:
+    app: harbor
+    component: portal
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080  # Portal listens on 8080 internally
+      protocol: TCP
+  selector:
+    app: portal

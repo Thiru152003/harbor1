@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: harbor-registry
+  namespace: harbor
+  labels:
+    app: harbor
+    component: registry
+spec:
+  type: ClusterIP
+  ports:
+    - name: registry
+      port: 5000
+      targetPort: 5000
+      protocol: TCP
+    - name: registry-metrics
+      port: 5001
+      targetPort: 5001
+      protocol: TCP
+  selector:
+    app: registry

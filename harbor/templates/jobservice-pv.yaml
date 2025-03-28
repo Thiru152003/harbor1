@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jobservice-pv
+  namespace: harbor
+  labels:
+    app: harbor
+    component: jobservice
+spec:
+  capacity:
+    storage: 5Gi  # Small size for job logs/temp data
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: gp3
+  persistentVolumeReclaimPolicy: Delete
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4

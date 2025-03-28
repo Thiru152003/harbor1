@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobservice
+  namespace: harbor
+  labels:
+    app: jobservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jobservice
+  template:
+    metadata:
+      labels:
+        app: jobservice
+    spec:
+      containers:
+        - name: jobservice
+          image: goharbor/harbor-jobservice:v2.10.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: CORE_URL
+              value: "http://harbor-core:80"
+            - name: POSTGRES_HOST
+              value: postgresql
+            - name: POSTGRES_DB
+              value: harbor_db
+            - name: POSTGRES_USER
+              value: harbor
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: harbor-db-secret
+                  key: password

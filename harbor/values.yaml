@@ -1,0 +1,51 @@
+ingress:
+  enabled: true
+  hostname: harbor.example.com
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+  tls:
+    enabled: true
+    secretName: harbor-tls
+
+postgresql:
+  enabled: true
+  auth:
+    username: harbor
+    password: harborpassword
+    database: harbor_db
+  primary:
+    persistence:
+      size: 10Gi
+      storageClass: gp3
+
+redis:
+  enabled: true
+  auth:
+    password: redispassword
+  persistence:
+    size: 5Gi
+
+persistence:
+  enabled: true
+  storageClass: gp3
+  size: 20Gi
+
+harborAdminPassword: "Harbor@123"
+
+registry:
+  storage:
+    backend: filesystem
+    persistence:
+      enabled: true
+      size: 50Gi
+
+trivy:
+  enabled: true
+
+# Registry Storage Configuration
+registry:
+  storage:
+    s3:
+      accessKey: "my-access-key"
+      secretKey: "my-secret-key"

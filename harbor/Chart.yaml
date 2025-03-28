@@ -1,0 +1,6 @@
+apiVersion: v2
+name: harbor
+description: "Helm chart for deploying Harbor with PostgreSQL in Kubernetes"
+type: application
+version: 0.1.0
+appVersion: "2.10.0"

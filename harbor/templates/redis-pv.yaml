@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: redis-pv
+  namespace: harbor
+  labels:
+    app: harbor
+    component: redis
+spec:
+  capacity:
+    storage: 10Gi  # Recommended for Redis persistence
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Retain  # Preserve Redis data
+  csi:
+    driver: ebs.csi.aws.com  # AWS EBS
+    fsType: ext4
+    volumeAttributes:
+      encrypted: "true"

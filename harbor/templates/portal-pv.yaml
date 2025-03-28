@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: portal-pv
+  namespace: harbor
+  labels:
+    app: harbor
+    component: portal
+spec:
+  capacity:
+    storage: 1Gi  # Small size for potential config files
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ""
+  persistentVolumeReclaimPolicy: Delete
+  hostPath:
+    path: /var/lib/harbor/portal
+    type: DirectoryOrCreate

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: registry-configmap
+  namespace: harbor
+data:
+  REGISTRY_HTTP_SECRET: "supersecret"
+  REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY: "/storage"
+  REGISTRY_AUTH: "harbor_auth"
+  REGISTRY_AUTH_HARBOR_URL: "https://harbor.yourdomain.com/service/token"
+  REGISTRY_AUTH_HARBOR_REALM: "harbor-realm"

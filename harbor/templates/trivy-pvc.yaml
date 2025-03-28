@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: trivy-pvc
+  namespace: harbor
+  labels:
+    app: harbor
+    component: trivy
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+  volumeName: trivy-pv  # Explicit binding

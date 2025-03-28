@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harbor-core
+  namespace: harbor
+  labels:
+    app: harbor-core
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: harbor-core
+  template:
+    metadata:
+      labels:
+        app: harbor-core
+    spec:
+      containers:
+        - name: core
+          image: goharbor/harbor-core:v2.10.0
+          ports:
+            - containerPort: 80
+          env:
+            - name: POSTGRES_HOST
+              value: postgresql
+            - name: POSTGRES_DB
+              value: harbor_db
+            - name: POSTGRES_USER
+              value: harbor
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: harbor-db-secret
+                  key: password
+          volumeMounts:
+            - name: config
+              mountPath: /etc/core/app.conf
+      volumes:
+        - name: config
+          configMap:
+            name: harbor-configmap
