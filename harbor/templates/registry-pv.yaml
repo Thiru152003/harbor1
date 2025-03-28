@@ -11,7 +11,7 @@ spec:
     storage: 50Gi  # Minimum recommended for registry storage
   accessModes:
     - ReadWriteMany  # Required for registry scaling
-  storageClassName: ""
+  storageClassName: gp2
   persistentVolumeReclaimPolicy: Retain  # Critical for registry data
   csi:
     driver: efs.csi.aws.com  # EFS for RWX (EBS doesn't support ReadWriteMany)
