@@ -12,4 +12,5 @@ spec:
   resources:
     requests:
       storage: 5Gi
+      storageClassName: gp2
   volumeName: trivy-pv  # Explicit binding
