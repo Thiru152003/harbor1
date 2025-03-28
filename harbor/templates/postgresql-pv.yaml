@@ -11,7 +11,7 @@ spec:
     storage: 50Gi  # Minimum recommended for production
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: gp2
   persistentVolumeReclaimPolicy: Retain  # Critical for database
   csi:
     driver: ebs.csi.aws.com  # For AWS (use azure-disk for Azure, pd.csi.storage.gke.io for GKE)
