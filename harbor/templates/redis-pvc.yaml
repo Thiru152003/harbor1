@@ -12,4 +12,5 @@ spec:
   resources:
     requests:
       storage: 10Gi
+      storageClassName: gp2
   volumeName: redis-pv  # Explicit binding
