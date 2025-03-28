@@ -11,7 +11,7 @@ spec:
     storage: 10Gi  # Recommended for Redis persistence
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: gp2
   persistentVolumeReclaimPolicy: Retain  # Preserve Redis data
   csi:
     driver: ebs.csi.aws.com  # AWS EBS
