@@ -11,7 +11,7 @@ spec:
     storage: 5Gi  # Small size for job logs/temp data
   accessModes:
     - ReadWriteOnce
-  storageClassName: gp3
+  storageClassName: gp2
   persistentVolumeReclaimPolicy: Delete
   csi:
     driver: ebs.csi.aws.com
