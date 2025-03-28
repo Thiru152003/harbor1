@@ -11,7 +11,7 @@ spec:
     storage: 1Gi  # Small size for potential config files
   accessModes:
     - ReadWriteOnce
-  storageClassName: ""
+  storageClassName: gp2
   persistentVolumeReclaimPolicy: Delete
   hostPath:
     path: /var/lib/harbor/portal
